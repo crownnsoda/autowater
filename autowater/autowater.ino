@@ -8,25 +8,25 @@ int valRed = 0;
 int valPurple = 0;
 int valGreen = 0;
  
-//Declare variables for the soil moisture sensor 
-int soilPinBlue = A0;
-int soilPinRed = A1;
-int soilPinPurple = A2;
-int soilPinGreen = A3;
+//Declare variables for the soil moisture sensor pins
+const int soilPinBlue = A0;
+const int soilPinRed = A1;
+const int soilPinPurple = A2;
+const int soilPinGreen = A3;
 
-//Variables for Soil moisture Power
-int soilPowerBlue = 6;
-int soilPowerRed = 7;
-int soilPowerPurple = 8; 
+//Variables for Soil moisture Power pins
+const int soilPowerBlue = 6;
+const int soilPowerRed = 7;
+const int soilPowerPurple = 8; 
 //pin 9,10,11 reserved for indicator LED
-int soilPowerGreen = 12;
+const int soilPowerGreen = 12;
 
-//Relay and Solenoid control for pump and valve
-int pumpPwr = 13;
-int flowPinBlue = 2;
-int flowPinRed = 3;
-int flowPinPurple = 4;
-int flowPinGreen = 5;
+//Relay and Solenoid control for pump and valve pins
+const int pumpPwr = 13;
+const int flowPinBlue = 2;
+const int flowPinRed = 3;
+const int flowPinPurple = 4;
+const int flowPinGreen = 5;
 
 //Digital read from flowPin's for debugging
 int relayStateBlue;
@@ -124,7 +124,8 @@ int readSoil()
     digitalWrite(soilPowerRed, LOW);//turn D8 "Off"
     digitalWrite(soilPowerPurple, LOW);//turn D9 "Off"
     digitalWrite(soilPowerGreen, LOW);//turn D10 "Off"
-    delay(1000);//keep LED on for 1 sec
+
+    delay(5000);//keep LED on for 1 sec
     setColor(0,0,0);//turn LED off
 
     
@@ -148,32 +149,32 @@ if (valBlue < blueOff)
 }
 if (valRed > redOn) 
 {
-      digitalWrite(flowPinBlue, HIGH);   // turn the relay on 
+      digitalWrite(flowRed, HIGH);   // turn the relay on 
       indicateRed = 1;
 }
 if (valRed < redOff) 
 {
-      digitalWrite(flowPinBlue, LOW);    // turn the relay off 
+      digitalWrite(flowPinRed, LOW);    // turn the relay off 
       indicateRed = 0;
 }
 if (valPurple > PurpleOn) 
 {
-      digitalWrite(flowPinBlue, HIGH);   // turn the relay on 
+      digitalWrite(flowPinPurple, HIGH);   // turn the relay on 
       indicatePurple = 1;
 }
 if (valPurple < PurpleOff) 
 {
-      digitalWrite(flowPinBlue, LOW);    // turn the relay off 
+      digitalWrite(flowPinPurple LOW);    // turn the relay off 
       indicatePurple = 0;
 }
 if (valGreen > greenOn) 
 {
-      digitalWrite(flowPinBlue, HIGH);   // turn the relay on 
+      digitalWrite(flowPinGreen, HIGH);   // turn the relay on 
       indicateGreen = 1;
 }
 if (valGreen < greenOff) 
 {
-      digitalWrite(flowPinBlue, LOW);    // turn the relay off 
+      digitalWrite(flowPinGreen, LOW);    // turn the relay off 
       indicateGreen = 0;
 }
 if ((indicateBlue + indicateRed + indicatePurple + indicateGreen) > 0)
