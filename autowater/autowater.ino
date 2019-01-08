@@ -149,7 +149,7 @@ if (valBlue < blueOff)
 }
 if (valRed > redOn) 
 {
-      digitalWrite(flowRed, HIGH);   // turn the relay on 
+      digitalWrite(flowPinRed, HIGH);   // turn the relay on 
       indicateRed = 1;
 }
 if (valRed < redOff) 
@@ -162,9 +162,9 @@ if (valPurple > PurpleOn)
       digitalWrite(flowPinPurple, HIGH);   // turn the relay on 
       indicatePurple = 1;
 }
-if (valPurple < PurpleOff) 
+if (valPurple < PurpleOff);
 {
-      digitalWrite(flowPinPurple LOW);    // turn the relay off 
+      digitalWrite(flowPinPurple, LOW);    // turn the relay off 
       indicatePurple = 0;
 }
 if (valGreen > greenOn) 
